@@ -1,15 +1,17 @@
 # Next.js 16.1.x MDX Multibyte Character Bug Reproduction
 
-This repo demonstrates a regression in Next.js 16.1.0+ where MDX files containing Japanese (multibyte) characters cause SWC to panic during build.
+This repo demonstrates a regression in Next.js 16.1.0+ where MDX files containing multibyte characters (e.g., Japanese full-width parentheses) cause SWC to panic during build.
 
 ## Bug Description
 
-When building an MDX file with Japanese full-width parentheses `（` `）`, SWC crashes with:
+When building an MDX file with multibyte characters like Japanese full-width parentheses `（` `）`, SWC crashes with:
 
 ```
 thread '<unnamed>' panicked at swc_common-18.0.0/src/source_map.rs:657:62:
-byte index 93 is not a char boundary; it is inside '（' (bytes 92..95)
+byte index 88 is not a char boundary; it is inside '（' (bytes 87..90)
 ```
+
+The issue is **not** related to `export const metadata` content, but to any multibyte character in the MDX file body.
 
 ## Reproduction Steps
 
