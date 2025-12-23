@@ -8,7 +8,7 @@ When building an MDX file with Japanese full-width parentheses `（` `）`, SWC 
 
 ```
 thread '<unnamed>' panicked at swc_common-18.0.0/src/source_map.rs:657:62:
-byte index 125 is not a char boundary; it is inside '（' (bytes 124..127)
+byte index 93 is not a char boundary; it is inside '（' (bytes 92..95)
 ```
 
 ## Reproduction Steps
